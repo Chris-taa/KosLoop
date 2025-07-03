@@ -1,0 +1,298 @@
+:root {
+  --primary-color: #03AC0E; /* Hijau utama */
+  --base-color: #ffffff; /* Warna dasar (putih) */
+  --text-dark-neutral: #333; /* Warna teks gelap umum (menggunakan #333 agar kontras dengan latar belakang terang) */
+  --text-light-neutral: #666; /* Warna teks netral lebih terang */
+  --background-light-grey: #f8f8f8; /* Latar belakang abu-abu terang untuk footer utama */
+  --background-medium-grey: #e9e9e9; /* Latar belakang abu-abu sedang untuk bagian bawah footer */
+  --border-light-grey: #e0e0e0; /* Warna border abu-abu terang */
+  --border-medium-grey: #ccc; /* Warna border abu-abu sedang */
+  --link-color: #007bff; /* Warna link default (biru) */
+  --link-hover-color: #0056b3; /* Warna hover link */
+}
+
+.kosloop-footer {
+    background-color: var(--background-light-grey); /* Menggunakan variabel */
+    color: #424242; /* Tidak ada variabel spesifik untuk ini, pertahankan atau buat variabel baru */
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-light-grey); /* Menggunakan variabel */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 180px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-section:last-child {
+    margin-right: 0;
+}
+
+.footer-section h3 {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-dark-neutral); /* Menggunakan variabel */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: var(--text-light-neutral); /* Menggunakan variabel baru atau var(--text-dark-neutral) jika ingin lebih gelap */
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--link-color); /* Menggunakan variabel */
+}
+
+/* Security Badges */
+.security-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.security-badge {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--base-color); /* Menggunakan variabel */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* App Section */
+.footer-app {
+    min-width: 280px;
+}
+
+.app-feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: #424242; /* Tidak ada variabel spesifik untuk ini, pertahankan atau buat variabel baru */
+}
+
+.app-feature .icon {
+    font-size: 1.2em;
+    margin-right: 8px;
+}
+
+.footer-app p {
+    font-size: 0.85em;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: var(--text-light-neutral); /* Menggunakan variabel */
+}
+
+.app-qr-download {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.qr-code {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border: 1px solid #ddd; /* Tidak ada variabel spesifik untuk ini, pertahankan atau buat variabel baru */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.download-buttons a img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+}
+
+.learn-more {
+    color: var(--link-color); /* Menggunakan variabel */
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.learn-more:hover {
+    text-decoration: underline;
+    color: var(--link-hover-color); /* Menggunakan variabel */
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+    background-color: var(--background-medium-grey); /* Menggunakan variabel */
+    padding: 15px 20px;
+    font-size: 0.8em;
+    color: var(--text-light-neutral); /* Menggunakan variabel */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-links-bottom a {
+    color: var(--link-color); /* Menggunakan variabel */
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.footer-links-bottom a:hover {
+    text-decoration: underline;
+    color: var(--link-hover-color); /* Menggunakan variabel */
+}
+
+.language-selector {
+    display: flex;
+    gap: 5px;
+}
+
+.lang-button {
+    background-color: transparent;
+    border: 1px solid var(--border-medium-grey); /* Menggunakan variabel */
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    color: var(--text-light-neutral); /* Menggunakan variabel */
+    transition: all 0.2s ease;
+}
+
+.lang-button.active {
+    background-color: var(--base-color); /* Menggunakan variabel */
+    border-color: var(--link-color); /* Menggunakan variabel */
+    color: var(--link-color); /* Menggunakan variabel */
+    font-weight: bold;
+}
+
+.lang-button:not(.active):hover {
+    background-color: var(--background-light-grey); /* Menggunakan variabel */
+    border-color: var(--text-light-neutral); /* Menggunakan variabel baru atau yang sudah ada */
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 992px) {
+    .footer-content {
+        justify-content: flex-start;
+    }
+
+    .footer-section {
+        flex: 1 1 45%;
+        margin-right: 15px;
+    }
+
+    .footer-section:nth-child(2n) {
+        margin-right: 0;
+    }
+
+    .footer-app {
+        flex: 1 1 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-section {
+        flex: 1 1 100%;
+        margin-right: 0;
+    }
+
+    .footer-content {
+        padding: 0 15px 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .footer-bottom p {
+        margin-bottom: 10px;
+    }
+
+    .footer-links-bottom a {
+        margin-left: 0;
+        margin: 0 5px;
+    }
+
+    .language-selector {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .security-badge {
+        width: 100px;
+    }
+
+    .qr-code {
+        width: 70px;
+        height: 70px;
+    }
+
+    .download-buttons a img {
+        width: 90px;
+    }
+}

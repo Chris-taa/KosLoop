@@ -1,0 +1,22 @@
+{
+    "name": "winit",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Chris-taa/Kosloop.id.git"
+    },
+    "author": "",
+    "bugs": {
+        "url": "https://github.com/Chris-taa/Kosloop.id/issues"
+    },
+    "homepage": "https://github.com/Chris-taa/Kosloop.id#readme",
+    "description": "",
+    "devDependencies": {
+        "concurrently": "^9.2.0"
+    }
+}

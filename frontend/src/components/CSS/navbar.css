@@ -1,0 +1,263 @@
+:root {
+  --primary-color: #03AC0E;
+  --base-color: #ffffff;
+  --text-dark-neutral: black;
+  --text-transparent-color: rgb(74, 72, 72); /* New variable for transparent text */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar Container */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  flex-wrap: wrap;
+  height: 55px;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
+  color: black;
+}
+
+/* Transparent Navbar (default) */
+.navbar.transparent {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0);
+  /* The main navbar color is already set to --base-color (white) here */
+}
+
+.navbar.transparent .navbar-logo a {
+  color: var(--text-transparent-color); /* Use the new variable */
+}
+
+.navbar.transparent .navbar-center li a {
+  color: var(--text-transparent-color); /* Use the new variable */
+}
+
+.navbar.transparent .user-profile a {
+  color: var(--text-transparent-color); /* Use the new variable */
+}
+
+/* Scrolled Navbar */
+.navbar.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Kolom Kiri */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  flex: 1.25;
+  gap: 14px;
+}
+
+.navbar-logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-dark-neutral); /* Default color for scrolled state */
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 0 12px;
+}
+
+.navbar-search input {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  background-color: transparent;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-icon {
+  color: #888;
+  margin-left: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Kolom Tengah */
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-center ul {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-center li a {
+  color: var(--text-dark-neutral); /* Default color for scrolled state */
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.navbar-center li a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
+}
+
+.navbar-center li a:hover::after {
+  transform: scaleX(1);
+}
+
+.navbar-center li a:hover {
+  color: var(--primary-color);
+}
+
+/* Kolom Kanan */
+.navbar-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-right ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-right li {
+  border-radius: 8px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.enter {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.enter a {
+  color: white;
+}
+
+.outline-button {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+}
+
+.outline-button a {
+  color: var(--primary-color);
+}
+
+.enter:hover {
+  background-color: white;
+  opacity: 0.9;
+}
+
+.enter:hover a {
+  color: var(--primary-color);
+}
+
+.outline-button:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.outline-button:hover a {
+  color: white;
+}
+
+/* Logged-in User Profile */
+.user-profile {
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+.user-profile a {
+  color: var(--text-dark-neutral); /* Default color for scrolled state */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.user-profile a:hover {
+  color: var(--primary-color);
+}
+
+.profile-pic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid black;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .navbar-left,
+  .navbar-center,
+  .navbar-right {
+    width: 100%;
+    justify-content: center;
+    flex: none;
+  }
+
+  .navbar-search {
+    max-width: 100%;
+  }
+
+  .navbar-center ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .navbar-right ul {
+    justify-content: center;
+  }
+
+  .user-profile a {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

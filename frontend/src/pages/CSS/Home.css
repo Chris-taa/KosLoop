@@ -1,0 +1,244 @@
+/* src/pages/CSS/Home.css */
+
+:root {
+  --primary-color: #03ac0e;
+  --base-color: #ffffff;
+  --text-dark-neutral: black;
+  --text-transparent-color: rgb(107, 106, 106);
+}
+
+/* Prevent horizontal scroll globally */
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; /* Pastikan font-family global diatur */
+}
+
+/* Home Layout */
+.home-wrapper {
+  padding-top: 55px; /* Sesuaikan jika navbar Anda memiliki tinggi berbeda */
+  overflow-x: hidden;
+}
+
+/* HERO SECTION (tetap sama) */
+.hero-container {
+  background-color: #ededed;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px 60px;
+  margin-top: -30px; /* Ini mungkin karena navbar fixed? Sesuaikan jika perlu */
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+}
+
+.hero-text {
+  text-align: left;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: #6b6a6a;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.hero-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.hero-button:hover {
+  background-color: #02940b;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* NEW: CATEGORIES SECTION IN HOME PAGE */
+.home-categories-section {
+    max-width: 1200px; /* Sama dengan product-container untuk konsistensi */
+    margin: 40px auto; /* Memberi jarak atas bawah dan pusatkan */
+    padding: 0 24px; /* Padding horizontal agar konten sejajar */
+    /* Box-shadow dan border-radius sudah ada di .categories-wrapper */
+}
+
+.home-categories-section .section-title { /* H2 di dalam section ini */
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.2rem; /* Ukuran yang sedikit lebih kecil dari home-title */
+    color: var(--text-dark-neutral);
+}
+
+
+/* PRODUCT SECTION (tetap sama) */
+.home-title {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: var(--text-dark-neutral);
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 30px;
+  padding: 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-bottom: 80px;
+}
+
+.product-grid { /* Ini mungkin tidak digunakan jika Anda pakai product-container */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #fff;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-dark-neutral);
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 12px;
+  min-height: 40px;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.btn-detail {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.btn-detail:hover {
+  background-color: #02940b;
+}
+
+.no-products-msg {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.2rem;
+  color: #777;
+}
+
+/* Responsive Grid (tetap sama) */
+@media (max-width: 1024px) {
+  .product-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 15px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  /* Kategori di mobile */
+  .home-categories-section {
+    padding: 0 15px; /* Sesuaikan padding untuk mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .product-container {
+    grid-template-columns: 1fr;
+  }
+}

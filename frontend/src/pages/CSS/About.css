@@ -1,0 +1,374 @@
+/* src/CSS/AboutUs.css */
+:root {
+  --primary-color: #03AC0E; /* Hijau utama KosLoop, mendekati warna Tokopedia */
+  --base-color: #ffffff;
+  --text-dark-neutral: #333; /* Menggunakan #333 agar konsisten dengan warna teks sebelumnya */
+  --shadow-dark: rgba(0, 0, 0, 0.8); /* Variabel untuk bayangan teks gelap */
+  --shadow-light: rgba(0, 0, 0, 0.7); /* Variabel untuk bayangan teks terang */
+}
+
+
+.about-us-page {
+  font-family: 'Arial', sans-serif;
+  color: var(--text-dark-neutral); /* Menggunakan variabel */
+  line-height: 1.6;
+  background-color: #f7f9fc; /* Latar belakang terang, bisa diubah ke variabel jika ada */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* --- Hero Section Styles --- */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Sesuaikan tinggi sesuai kebutuhan */
+  background-image: url('../Assets/toget.jpg'); /* Pastikan path gambar benar */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column; /* Mengatur item secara vertikal */
+  justify-content: center;
+  align-items: center;
+  color: var(--base-color); /* Warna teks default */
+  text-align: center;
+  overflow: hidden; /* Memastikan konten tidak meluber */
+  margin-top: -80px;
+  padding-top:112px;
+  padding-bottom: 112px;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Overlay gelap untuk keterbacaan teks */
+}
+
+.hero-content {
+  position: relative; /* Memposisikan konten di atas overlay */
+  z-index: 2; /* Memastikan teks berada di atas overlay */
+  padding: 20px;
+}
+
+.hero-title {
+  font-family: 'Montserrat', sans-serif; /* Menggunakan Montserrat */
+  font-size: 68px; /* Ukuran font lebih besar, mirip Tokopedia */
+  font-weight: 900; /* Font yang sangat tebal */
+  color: var(--primary-color); /* Menggunakan variabel primary-color (hijau Tokopedia) */
+  
+  margin-bottom: 5px; /* Sedikit jarak ke sub-judul */
+  line-height: 1.1; /* Mengurangi spasi baris jika judul panjang */
+}
+
+.hero-subtitle {
+  font-family: 'Montserrat', sans-serif; /* Menggunakan Montserrat untuk konsistensi */
+  font-size: 40px; /* Ukuran font yang pas untuk sub-judul */
+  font-weight: 800; /* Tebal, tapi sedikit kurang dari judul utama */
+  color: var(--base-color); /* Warna putih */
+  text-shadow: 2px 2px 5px var(--shadow-light); /* Bayangan untuk keterbacaan */
+}
+
+/* --- Bagian Lainnya (Menggunakan variabel jika memungkinkan) --- */
+.about-section {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.about-section:nth-child(even) {
+  background-color: var(--base-color); /* Menggunakan variabel */
+}
+
+.section-subtitle {
+  color: var(--primary-color); /* Menggunakan variabel */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 44px;
+  font-weight: bold;
+  color: var(--text-dark-neutral); /* Menggunakan variabel */
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.section-description {
+  font-size: 18px;
+  color: #555; /* Warna ini bisa ditambahkan ke variabel jika sering digunakan */
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+
+.read-more-button {
+  background-color: transparent;
+  color: var(--primary-color); /* Menggunakan variabel */
+  border: 2px solid var(--primary-color); /* Menggunakan variabel */
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.read-more-button:hover {
+  background-color: var(--primary-color); /* Menggunakan variabel */
+  color: var(--base-color); /* Menggunakan variabel */
+}
+
+/* --- Dampak Kami Section --- */
+.impact-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  max-width: 600px;
+  margin: 30px auto 40px;
+  font-size: 17px;
+  color: #444; /* Warna ini bisa ditambahkan ke variabel jika sering digunakan */
+}
+
+.impact-list li {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.impact-list li strong {
+  color: var(--primary-color); /* Menggunakan variabel */
+}
+
+.impact-images {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.impact-image-item {
+  text-align: center;
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+}
+
+.impact-image-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.impact-image-item p {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #666; /* Warna ini bisa ditambahkan ke variabel jika sering digunakan */
+}
+
+/* --- Budaya Kerja Kami Section --- */
+.culture-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.culture-card {
+  background-color: var(--base-color); /* Menggunakan variabel */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.culture-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.culture-card i {
+  font-size: 50px;
+  color: var(--primary-color); /* Menggunakan variabel */
+  margin-bottom: 20px;
+}
+
+.culture-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--text-dark-neutral); /* Menggunakan variabel */
+}
+
+.culture-card p {
+  font-size: 16px;
+  color: #777; /* Warna ini bisa ditambahkan ke variabel jika sering digunakan */
+}
+
+/* --- Bisnis Kami Section --- */
+.business-features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}
+
+.feature-item {
+  background-color: var(--base-color); /* Menggunakan variabel */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+}
+
+.feature-item i {
+  font-size: 45px;
+  color: var(--primary-color); /* Menggunakan variabel */
+  margin-bottom: 20px;
+}
+
+.feature-item h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--text-dark-neutral); /* Menggunakan variabel */
+}
+
+.feature-item p {
+  font-size: 16px;
+  color: #777; /* Warna ini bisa ditambahkan ke variabel jika sering digunakan */
+}
+
+.business-stats {
+  margin-top: 60px;
+  background-color: #eaf7ed; /* Latar belakang ini bisa dijadikan variabel jika sering digunakan */
+  padding: 60px 40px;
+  border-radius: 10px;
+}
+
+.business-stats .section-title {
+  font-size: 38px;
+  margin-bottom: 50px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  text-align: left;
+}
+
+.stat-item {
+  background-color: var(--base-color); /* Menggunakan variabel */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.stat-item .stat-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--primary-color); /* Menggunakan variabel */
+  display: block;
+  margin-bottom: 5px;
+}
+
+.stat-item .stat-label {
+  font-size: 18px;
+  color: #555; /* Warna ini bisa ditambahkan ke variabel jika sering digunakan */
+}
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 36px;
+  }
+  .section-description {
+    font-size: 16px;
+  }
+  .culture-cards, .business-features {
+    flex-direction: column;
+    align-items: center;
+  }
+  .culture-card, .feature-item {
+    max-width: 80%; /* Agar tidak terlalu lebar di tablet */
+  }
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .hero-title {
+    font-size: 58px; /* Disesuaikan untuk ukuran layar ini */
+  }
+  .hero-subtitle {
+    font-size: 32px; /* Disesuaikan untuk ukuran layar ini */
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 15px;
+  }
+  .about-section {
+    padding: 60px 0;
+  }
+  .section-title {
+    font-size: 30px;
+  }
+  .section-description {
+    font-size: 15px;
+  }
+  .read-more-button {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+  .impact-images {
+    flex-direction: column;
+    align-items: center;
+  }
+  .impact-image-item, .culture-card, .feature-item {
+    min-width: unset;
+    width: 90%;
+  }
+  .stat-item .stat-number {
+    font-size: 38px;
+  }
+  .stat-item .stat-label {
+    font-size: 16px;
+  }
+  .hero-title {
+    font-size: 48px; /* Disesuaikan untuk ukuran layar ini */
+  }
+  .hero-subtitle {
+    font-size: 28px; /* Disesuaikan untuk ukuran layar ini */
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 26px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr; /* Satu kolom di layar sangat kecil */
+  }
+  .hero-title {
+    font-size: 36px; /* Disesuaikan untuk ukuran layar ini */
+  }
+  .hero-subtitle {
+    font-size: 22px; /* Disesuaikan untuk ukuran layar ini */
+  }
+}
