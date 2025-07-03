@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
 import ProductCard from "../components/ProductCard";
 import Categories from "../components/Categories"; // <--- UNCOMMENTED THIS LINE
 import "./CSS/Home.css";
@@ -27,7 +25,6 @@ function Home() {
 
   return (
     <div>
-      <Navbar /> {/* Navbar Anda akan menangani kategori */}
       <div className="home-wrapper">
         {/* Hero Section */}
         <div className="hero-container">
@@ -68,7 +65,6 @@ function Home() {
           <p className="no-products-msg">Tidak ada produk tersedia saat ini.</p>
         )}
       </div>
-      <Footer />
     </div>
   );
 }

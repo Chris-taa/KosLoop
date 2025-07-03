@@ -1,0 +1,930 @@
+:root {
+  --primary-color: #03ac0e; /* Ini adalah hijau Tokopedia yang lebih baru */
+  --base-color: #ffffff;
+  --text-dark-neutral: black;
+  --text-transparent-color: rgb(107, 106, 106);
+  --secondary-color: #f70; /* Orange/Merah (tetap didefinisikan, tapi tidak digunakan untuk harga) */
+  --link-color: #007bff; /* Biru standar untuk link */
+  --border-color: #eee;
+  --grey-text-color: #555;
+  --light-grey-bg: #f9f9f9;
+  --darker-grey-text-color: #333; /* Tambahan untuk teks yang lebih gelap */
+  --lighter-grey-text-color: #888; /* Tambahan untuk teks yang lebih terang */
+  --medium-grey-text-color: #666; /* Tambahan untuk teks abu-abu medium */
+  --light-border-color: #ddd; /* Tambahan untuk border yang lebih terang */
+  --faded-background: #f0f0f0; /* Untuk tombol abu-abu */
+}
+
+.detail-page-container {
+    max-width: 1200px; /* Batasi lebar container utama */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--base-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    color: var(--darker-grey-text-color); /* Menggunakan variabel */
+}
+
+.detail-product-content {
+    display: flex;
+    gap: 30px; /* Jarak antara gambar dan info */
+    margin-bottom: 30px;
+}
+
+.detail-product-images {
+    flex: 0 0 350px; /* Lebar gambar, coba sesuaikan jika masih terpotong */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-product-image {
+    width: 100%;
+    max-width: 350px; /* Sesuaikan dengan flex basis di atas */
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.thumbnail-images {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto; /* Memungkinkan scroll jika banyak thumbnail */
+    padding-bottom: 5px; /* Untuk scrollbar */
+}
+
+.thumbnail-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 1px solid var(--light-border-color); /* Menggunakan variabel */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.thumbnail-image:hover,
+.thumbnail-image.active { /* Tambahkan active class untuk thumbnail yang sedang aktif */
+    border-color: var(--primary-color);
+}
+
+.detail-product-info {
+    flex: 1; /* Mengambil sisa ruang yang tersedia */
+    min-width: 0; /* Penting untuk Flexbox agar konten di dalamnya bisa overflow-wrap/wrap */
+}
+
+.product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Memungkinkan kata panjang untuk putus */
+    overflow-wrap: break-word; /* Alternatif untuk word-wrap */
+    white-space: normal; /* Memastikan teks membungkus ke baris baru */
+}
+
+.product-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--text-dark-neutral); /* DIUBAH: Menggunakan warna hitam dari variabel */
+    margin-bottom: 20px;
+}
+
+/* Bagian .variant-selection dan .variants-grid kini sudah dihapus dari JSX */
+/* Jadi, styling ini secara teknis tidak lagi dibutuhkan, tapi tidak akan menyebabkan error jika tetap ada */
+.variant-selection p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.variants-grid {
+    display: flex;
+    flex-wrap: wrap; /* Memungkinkan chips untuk membungkus ke baris baru */
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.variant-chip {
+    padding: 8px 15px;
+    border: 1px solid #ccc; /* Tetap hardcoded atau buat variabel baru jika perlu */
+    border-radius: 20px;
+    background-color: #f8f8f8; /* Tetap hardcoded atau buat variabel baru jika perlu */
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    font-size: 14px;
+    white-space: nowrap; /* Mencegah chip itu sendiri pecah kata */
+}
+
+.variant-chip:hover {
+    background-color: #e9e9e9; /* Tetap hardcoded atau buat variabel baru jika perlu */
+}
+
+.variant-chip.selected {
+    background-color: color-mix(in srgb, var(--primary-color) 10%, var(--base-color)); /* Warna latar belakang cerah dari primary-color */
+    border-color: var(--primary-color);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.quantity-selector {
+    margin-bottom: 20px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.quantity-selector span {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc; /* Tetap hardcoded atau buat variabel baru jika perlu */
+    background-color: var(--faded-background); /* Menggunakan variabel */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-control span {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.stock-info {
+    color: var(--medium-grey-text-color); /* Menggunakan variabel */
+    font-size: 14px;
+}
+
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.subtotal-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--text-dark-neutral); /* DIUBAH: Menggunakan warna hitam dari variabel */
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.buy-button, .add-to-cart-button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    flex: 1; /* Agar tombol mengisi ruang yang sama */
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; /* Tambah transisi */
+    display: flex; /* Untuk menengahkan ikon + teks */
+    align-items: center;
+    justify-content: center;
+}
+
+.buy-button {
+    background-color: var(--base-color); /* Putih */
+    color: var(--primary-color); /* Hijau */
+    border: 2px solid var(--primary-color); /* Border hijau tebal */
+}
+
+.buy-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 10%, var(--base-color)); /* Sedikit hijau saat hover */
+}
+
+.buy-button:active {
+    background-color: color-mix(in srgb, var(--primary-color) 20%, var(--base-color)); /* Lebih hijau saat active */
+}
+
+.add-to-cart-button {
+    background-color: var(--primary-color); /* Hijau */
+    color: var(--base-color); /* Putih */
+    border: none; /* Hapus border */
+}
+
+.add-to-cart-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black); /* Sedikit gelap saat hover */
+}
+
+.add-to-cart-button:active {
+    background-color: color-mix(in srgb, var(--primary-color) 70%, black); /* Lebih gelap saat active */
+}
+
+/* Jika Anda ingin menambahkan ikon plus (+) secara visual melalui CSS (alternatif jika tidak ada di JSX) */
+.add-to-cart-button::before {
+    content: "+";
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.seller-contact {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.seller-contact button {
+    background: none;
+    border: 1px solid #ccc; /* Tetap hardcoded atau buat variabel baru jika perlu */
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--grey-text-color);
+}
+
+.seller-contact button:hover {
+    background-color: var(--faded-background); /* Menggunakan variabel */
+}
+
+/* Tabs Section */
+.detail-tabs {
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid var(--light-border-color); /* Menggunakan variabel */
+    margin-bottom: 20px;
+}
+
+.tab-buttons button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--grey-text-color);
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.2s, color 0.2s;
+}
+
+.tab-buttons button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.tab-content {
+    padding: 10px 0;
+}
+
+.product-details-section h3,
+.product-reviews-section h3,
+.product-discussion-section h3,
+.product-recommendations-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.product-details-section p {
+    margin-bottom: 8px;
+}
+
+.product-description-content {
+    margin-bottom: 10px;
+}
+
+.product-details-section .note {
+    font-style: italic;
+    color: var(--text-transparent-color); /* Menggunakan variabel */
+    margin-top: 15px;
+}
+
+.see-more-link {
+    color: var(--link-color);
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.shop-info {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--light-grey-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.shop-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.shop-icon {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.shop-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.shop-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--grey-text-color); /* DIUBAH: Menggunakan warna abu-abu untuk teks rating */
+    margin-bottom: 10px;
+}
+
+.shop-rating .fas.fa-star {
+    color: gold; /* Biarkan bintang tetap gold */
+}
+
+.follow-button {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* --- Styling untuk bagian Ulasan Pembeli yang Diperluas --- */
+.product-reviews-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-summary-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.overall-rating-score {
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--text-dark-neutral); /* DIUBAH: Menggunakan warna hitam untuk skor rating utama */
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.overall-rating-score .fas.fa-star {
+    color: gold;
+    font-size: 30px;
+}
+
+.overall-rating-score .max-rating {
+    font-size: 24px;
+    color: var(--medium-grey-text-color); /* Menggunakan variabel */
+}
+
+.satisfaction-percentage {
+    font-size: 16px;
+    color: var(--darker-grey-text-color); /* Menggunakan variabel */
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.rating-review-count {
+    font-size: 14px;
+    color: var(--lighter-grey-text-color); /* Menggunakan variabel */
+    margin-top: 2px;
+}
+
+.rating-breakdown-extended {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.rating-row-extended {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.rating-row-extended .star-label {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--grey-text-color);
+}
+
+.rating-row-extended .star-label .fas.fa-star {
+    color: gold;
+}
+
+.progress-bar-container-extended {
+    flex: 1;
+    background-color: var(--border-color);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar-extended {
+    height: 100%;
+    background-color: var(--primary-color); /* DIUBAH: Menggunakan primary-color untuk progress bar */
+    border-radius: 5px;
+}
+
+.rating-row-extended .rating-count {
+    width: 30px;
+    text-align: right;
+    font-size: 14px;
+    color: var(--grey-text-color);
+}
+
+.review-filters-and-content {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.review-filters {
+    flex: 0 0 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-right: 20px;
+    border-right: 1px solid var(--border-color);
+}
+
+.review-filters .filter-heading,
+.review-list-section .filter-heading {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--darker-grey-text-color);
+    text-transform: uppercase;
+}
+
+.filter-dropdown-wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.filter-dropdown-wrapper .filter-label {
+    font-size: 14px;
+    color: var(--medium-grey-text-color);
+    margin-bottom: 5px;
+}
+
+.filter-dropdown {
+    width: 100%;
+    padding: 8px 10px;
+    padding-right: 30px;
+    border: 1px solid #ccc; /* Tetap hardcoded atau buat variabel baru jika perlu */
+    border-radius: 6px;
+    background-color: var(--base-color);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--darker-grey-text-color);
+}
+
+.filter-dropdown:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary-color) 25%, transparent); /* Sesuaikan dengan primary-color */
+}
+
+.filter-dropdown-wrapper .dropdown-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(calc(-50% + 5px));
+    pointer-events: none;
+    color: var(--lighter-grey-text-color);
+    font-size: 12px;
+}
+
+.review-list-section {
+    flex: 1;
+}
+
+.buyer-media-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.buyer-media-thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+.no-media-text {
+    color: var(--lighter-grey-text-color);
+    font-style: italic;
+    font-size: 14px;
+}
+
+.review-list-heading {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.review-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.review-count-display {
+    font-size: 14px;
+    color: var(--medium-grey-text-color);
+}
+
+.sort-dropdown-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-dropdown-wrapper .sort-label {
+    font-size: 14px;
+    color: var(--medium-grey-text-color);
+}
+
+.sort-dropdown {
+    padding: 8px 10px;
+    padding-right: 30px;
+    border: 1px solid #ccc; /* Tetap hardcoded atau buat variabel baru jika perlu */
+    border-radius: 6px;
+    background-color: var(--base-color);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--darker-grey-text-color);
+}
+
+.sort-dropdown:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary-color) 25%, transparent); /* Sesuaikan dengan primary-color */
+}
+
+.sort-dropdown-wrapper .dropdown-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(calc(-50% + 1px));
+    pointer-events: none;
+    color: var(--lighter-grey-text-color);
+    font-size: 12px;
+}
+
+.actual-review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.single-review-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fcfcfc; /* Bisa disesuaikan dengan variabel light-grey-bg atau baru */
+}
+
+.single-review-item .review-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.single-review-item .review-stars .fas.fa-star.gold {
+    color: gold;
+    font-size: 16px;
+}
+
+.single-review-item .review-stars .far.fa-star.grey {
+    color: #ccc;
+    font-size: 16px;
+}
+
+.single-review-item .review-time {
+    font-size: 12px;
+    color: var(--lighter-grey-text-color);
+    margin-left: auto;
+}
+
+.single-review-item .review-options-btn {
+    background: none;
+    border: none;
+    color: var(--lighter-grey-text-color);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.reviewer-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ddd; /* Tetap hardcoded atau buat variabel baru jika perlu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: var(--medium-grey-text-color);
+    border: 1px solid #ccc; /* Tetap hardcoded atau buat variabel baru jika perlu */
+}
+
+.reviewer-name {
+    font-weight: bold;
+    color: var(--darker-grey-text-color);
+    font-size: 14px;
+}
+
+.review-variant {
+    font-size: 13px;
+    color: var(--text-transparent-color);
+    margin-bottom: 8px;
+}
+
+.review-comment {
+    font-size: 14px;
+    color: var(--darker-grey-text-color);
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.review-media-preview img {
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-top: 10px;
+}
+
+.no-reviews-text {
+    text-align: center;
+    color: var(--lighter-grey-text-color);
+    padding: 20px;
+    border: 1px dashed var(--light-border-color); /* Menggunakan variabel */
+    border-radius: 8px;
+    font-style: italic;
+}
+
+/* --- Akhir Styling untuk bagian Ulasan Pembeli yang Diperluas --- */
+
+/* Shipping Info */
+.shipping-info {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--light-grey-bg);
+}
+
+.shipping-info h3 {
+    margin-bottom: 15px;
+}
+
+.shipping-info p {
+    margin-bottom: 8px;
+}
+
+.shipping-info strong {
+    font-weight: bold;
+    color: var(--darker-grey-text-color);
+}
+
+/* App Promo Banner */
+.app-promo-banner {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: color-mix(in srgb, var(--primary-color) 10%, var(--base-color)); /* Menggunakan primary-color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.app-promo-banner h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.promo-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.promo-content img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.promo-content p {
+    flex: 1;
+    font-size: 15px;
+    color: var(--grey-text-color);
+}
+
+/* Report Issue */
+.report-issue {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: var(--base-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.report-issue p {
+    margin: 0;
+    color: var(--text-transparent-color);
+}
+
+.report-button {
+    background-color: var(--faded-background); /* Menggunakan variabel */
+    border: 1px solid #ccc; /* Tetap hardcoded atau buat variabel baru jika perlu */
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--grey-text-color);
+}
+
+.report-button:hover {
+    background-color: #e9e9e9; /* Tetap hardcoded atau buat variabel baru jika perlu */
+}
+
+/* Discussion Section */
+.product-discussion-section {
+    padding: 20px 0;
+}
+
+.product-discussion-section h3 {
+    margin-bottom: 15px;
+}
+
+.product-discussion-section p {
+    margin-bottom: 20px;
+    color: var(--grey-text-color);
+    font-size: 15px;
+}
+
+.chat-seller-button {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.chat-seller-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+
+.chat-seller-button:active {
+    background-color: color-mix(in srgb, var(--primary-color) 70%, black);
+    border-color: color-mix(in srgb, var(--primary-color) 70%, black);
+}
+
+
+/* Styling untuk bagian rekomendasi */
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 15px;
+}
+
+.product-recommendations-section {
+    padding: 20px 0;
+}
+
+.see-all-recommendations {
+    display: block;
+    width: 200px;
+    margin: 20px auto 0 auto;
+    padding: 10px 20px;
+    background-color: var(--base-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.see-all-recommendations:hover {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border-color: var(--primary-color);
+}
+
+.see-all-recommendations:active {
+    background-color: color-mix(in srgb, var(--primary-color) 70%, black);
+    border-color: color-mix(in srgb, var(--primary-color) 70%, black);
+}
+
+
+/* --- Media Queries untuk Responsivitas --- */
+@media (max-width: 1200px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .recommendations-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .product-card-link {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}

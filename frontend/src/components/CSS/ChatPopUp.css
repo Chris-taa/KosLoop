@@ -1,0 +1,523 @@
+/* src/components/CSS/ChatPopup.css */
+
+:root {
+    --primary-color: #03ac0e; /* Hijau Tokopedia */
+    --base-color: #ffffff;    /* Putih */
+    --text-dark-neutral: black;
+    --text-transparent-color: rgb(107, 106, 106);
+    --secondary-color: #f70; /* Orange/Merah */
+    --link-color: #007bff;
+    --border-color: #eee;
+    --grey-text-color: #555;
+    --light-grey-bg: #f9f9f9;
+    --darker-grey-text-color: #333;
+    --lighter-grey-text-color: #888;
+    --medium-grey-text-color: #666;
+    --light-border-color: #ddd;
+    --faded-background: #f0f0f0;
+}
+
+.chat-popup-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 700px; /* Lebar keseluruhan pop-up yang lebih lebar untuk dua panel */
+    height: 500px; /* Tinggi pop-up */
+    background-color: var(--base-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    transition: height 0.3s ease, width 0.3s ease, transform 0.3s ease;
+    font-family: sans-serif; /* Pastikan font konsisten */
+}
+
+.chat-popup-container.minimized {
+    width: 200px;
+    height: 50px; /* Hanya tinggi header */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-popup-header {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    flex-shrink: 0; /* Pastikan header tidak menyusut */
+}
+
+.chat-popup-container.minimized .chat-popup-header {
+    cursor: pointer; /* Hanya aktifkan cursor pointer untuk restore */
+}
+
+.chat-shop-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-grow: 1; /* Mengambil ruang di header */
+}
+
+.shop-icon-chat {
+    background-color: var(--base-color);
+    color: var(--primary-color);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.shop-name-chat {
+    font-size: 16px;
+}
+
+.chat-header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.chat-header-actions i {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.chat-header-actions i:hover {
+    color: #f0f0f0;
+}
+
+.chat-popup-body {
+    display: flex; /* Untuk menampung sidebar dan percakapan aktif */
+    flex-grow: 1;
+    overflow: hidden; /* Mencegah overflow dari scrollable content di dalamnya */
+}
+
+/* Chat Sidebar (Daftar Chat) */
+.chat-sidebar {
+    flex: 0 0 250px; /* Lebar sidebar */
+    border-right: 1px solid var(--border-color);
+    background-color: var(--light-grey-bg);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0; /* Padding vertikal */
+}
+
+.sidebar-header {
+    padding: 0 15px 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+}
+
+.sidebar-header .search-chat-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--light-border-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.sidebar-header .filter-chat-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--light-border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: var(--base-color);
+    cursor: pointer;
+}
+
+.chat-list {
+    flex-grow: 1;
+    overflow-y: auto; /* Agar daftar chat bisa discroll */
+    padding: 0 10px; /* Padding horizontal untuk list item */
+}
+
+.chat-list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.chat-list-item:hover {
+    background-color: var(--faded-background);
+}
+
+.chat-list-item.active {
+    background-color: color-mix(in srgb, var(--primary-color) 10%, var(--base-color));
+}
+
+.chat-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+}
+
+.chat-details {
+    flex-grow: 1;
+    overflow: hidden; /* Untuk ellipsis */
+}
+
+.chat-name-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.chat-name {
+    font-weight: bold;
+    color: var(--darker-grey-text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-list-item .chat-time { /* Spesifik untuk chat list */
+    font-size: 12px;
+    color: var(--lighter-grey-text-color);
+    flex-shrink: 0;
+}
+
+.last-message {
+    font-size: 13px;
+    color: var(--grey-text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.unread-badge {
+    background-color: var(--secondary-color); /* Warna badge notifikasi */
+    color: var(--base-color);
+    font-size: 11px;
+    padding: 3px 7px;
+    border-radius: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Active Conversation Area */
+.chat-active-conversation {
+    flex: 1; /* Mengambil sisa ruang */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-conversation-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    flex-shrink: 0;
+    color: var(--darker-grey-text-color);
+}
+
+.chat-shop-info-current {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.conversation-actions i {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+    color: var(--grey-text-color);
+    transition: color 0.2s ease;
+}
+
+.conversation-actions i:hover {
+    color: var(--primary-color);
+}
+
+.chat-messages-area {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    max-width: 80%; /* Batasi lebar bubble pesan */
+}
+
+.chat-message.incoming {
+    align-self: flex-start; /* Pesan masuk dari kiri */
+}
+
+.chat-message.outgoing {
+    align-self: flex-end; /* Pesan keluar dari kanan */
+}
+
+.chat-message.system {
+    align-self: center;
+    text-align: center;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--medium-grey-text-color);
+    max-width: 100%;
+}
+
+.chat-message.system-product-query {
+    align-self: center;
+    max-width: 100%;
+}
+
+.chat-message .chat-sender {
+    font-weight: bold;
+    color: var(--darker-grey-text-color);
+    margin-right: 5px;
+    margin-bottom: 2px;
+}
+
+.chat-message .chat-time {
+    font-size: 11px;
+    color: var(--lighter-grey-text-color);
+    margin-bottom: 5px;
+}
+
+.message-bubble {
+    padding: 8px 12px;
+    border-radius: 12px;
+    word-wrap: break-word;
+}
+
+.chat-message.incoming .message-bubble {
+    background-color: var(--light-grey-bg);
+    color: var(--darker-grey-text-color);
+    border-bottom-left-radius: 2px; /* Pojok tajam */
+}
+
+.chat-message.outgoing .message-bubble {
+    background-color: color-mix(in srgb, var(--primary-color) 90%, var(--base-color)); /* Background hijau muda */
+    color: var(--darker-grey-text-color);
+    border-bottom-right-radius: 2px; /* Pojok tajam */
+}
+
+.chat-message.system .message-bubble {
+    background: none;
+    padding: 0;
+}
+
+
+/* Product Preview in Chat */
+.chat-product-preview,
+.chat-product-preview-in-message { /* Digunakan di kedua tempat */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--light-grey-bg);
+    margin-bottom: 15px; /* Hanya di luar area pesan */
+}
+.chat-product-preview-in-message {
+    margin: 5px 0; /* Margin lebih kecil jika di dalam pesan */
+    align-self: center; /* Tengah jika sebagai pesan */
+    width: 90%; /* Sesuaikan lebar */
+    padding: 8px;
+}
+
+.chat-product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+.chat-product-preview-in-message img {
+    width: 50px; /* Lebih kecil jika di dalam pesan */
+    height: 50px;
+}
+
+.chat-product-details {
+    flex-grow: 1;
+}
+.chat-product-preview-in-message .details {
+    flex-grow: 1;
+}
+
+.chat-product-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--darker-grey-text-color);
+    margin-bottom: 5px;
+    display: -webkit-box;
+    /* -webkit-line-clamp: 2; */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.chat-product-preview-in-message .product-name {
+    font-size: 12px;
+    /* -webkit-line-clamp: 1; */
+}
+
+
+.chat-product-price {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-dark-neutral);
+}
+.chat-product-preview-in-message .product-price {
+    font-size: 13px;
+}
+
+.beli-sekarang-btn {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 5px; /* Jarak dari harga */
+}
+.beli-sekarang-btn:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+
+/* Chat Input Area */
+.chat-input-area {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    padding: 10px 15px; /* Padding di sekitar input area */
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.chat-input-area textarea {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 40px;
+    max-height: 100px;
+    overflow-y: auto;
+    font-family: sans-serif; /* Pastikan font sama */
+}
+
+.chat-input-area textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary-color) 25%, transparent);
+}
+
+.chat-input-area .chat-send-button { /* Lebih spesifik */
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border: none;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.2s ease;
+}
+
+.chat-input-area .chat-send-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+
+.no-chat-selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    color: var(--grey-text-color);
+    font-size: 16px;
+}
+
+
+/* Media Queries for Chat Popup */
+@media (max-width: 768px) {
+    .chat-popup-container {
+        width: 90vw; /* Lebih lebar di mobile */
+        right: 5vw;
+        left: 5vw;
+        height: 70vh; /* Tinggi menyesuaikan layar */
+        bottom: 10px;
+    }
+    .chat-popup-body {
+        flex-direction: column; /* Sidebar di atas percakapan atau dihilangkan */
+    }
+    .chat-sidebar {
+        flex: 0 0 auto; /* Tidak fix width lagi */
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 10px;
+        max-height: 200px; /* Batasi tinggi sidebar */
+    }
+    .chat-active-conversation {
+        padding: 10px;
+    }
+    .chat-sidebar-toggle { /* Sembunyikan toggle jika sidebar selalu terlihat */
+        display: none;
+    }
+}
+@media (max-width: 480px) {
+    .chat-popup-container {
+        width: 95vw;
+        right: 2.5vw;
+        left: 2.5vw;
+    }
+    .chat-list-item {
+        padding: 8px;
+    }
+    .chat-avatar img {
+        width: 30px;
+        height: 30px;
+    }
+    .chat-name, .last-message {
+        font-size: 12px;
+    }
+    .chat-message {
+        font-size: 13px;
+    }
+    .chat-input-area textarea {
+        font-size: 13px;
+        padding: 8px;
+    }
+    .chat-send-button {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}

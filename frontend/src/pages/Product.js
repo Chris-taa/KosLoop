@@ -1,18 +1,13 @@
 // src/pages/Product.js
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
-import ProductCard from '../components/ProductCard'; // <-- IMPORT BARU DI SINI
+import ProductCard from '../components/ProductCard';
 import './CSS/Product.css';
-
-// HAPUS KOMPONEN ProductCard DARI SINI KARENA SUDAH DI FILE TERPISAH
 
 function Product() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    // Data dummy untuk produk (tetap sama)
     const dummyProducts = [
       {
         id: 1,
@@ -20,7 +15,7 @@ function Product() {
         originalPrice: 1469000,
         currentPrice: 1469000,
         discount: null,
-        image: "https://picsum.photos/200/300" ,
+        image: "https://picsum.photos/200/300?random=1",
         rating: 5.0,
         soldCount: "250+ terjual",
         location: "Kota Administrasi Jakarta Barat",
@@ -34,7 +29,7 @@ function Product() {
         originalPrice: 985000,
         currentPrice: 837250,
         discount: "Flash Sale",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=2",
         rating: 5.0,
         soldCount: "30+ terjual",
         location: "Kota Administrasi Jakarta Utara",
@@ -48,7 +43,7 @@ function Product() {
         originalPrice: 1949000,
         currentPrice: 1870900,
         discount: "4%",
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=3",
         rating: 5.0,
         soldCount: "50+ terjual",
         location: "Kota Administrasi Jakarta Pusat",
@@ -62,7 +57,7 @@ function Product() {
         originalPrice: 799000,
         currentPrice: 789000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=4",
         rating: 4.9,
         soldCount: "500+ terjual",
         location: "Kota Administrasi Jakarta Utara",
@@ -76,7 +71,7 @@ function Product() {
         originalPrice: null,
         currentPrice: 645000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://images.tokopedia.net/img/cache/900/VqbcmM/2024/6/15/8e040051-512c-473d-bb62-58e1778129759.jpg", // Menggunakan gambar spesifik ini untuk demo Detail Page
         rating: 5.0,
         soldCount: "50+ terjual",
         location: "Kab. Sleman",
@@ -90,7 +85,7 @@ function Product() {
         originalPrice: null,
         currentPrice: 749000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=6",
         rating: 5.0,
         soldCount: "200+ terjual",
         location: "Kota Administrasi Jakarta Utara",
@@ -104,7 +99,7 @@ function Product() {
         originalPrice: 759000,
         currentPrice: 1196000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=7",
         rating: 5.0,
         soldCount: "4 terjual",
         location: "Kab. Sleman",
@@ -118,7 +113,7 @@ function Product() {
         originalPrice: null,
         currentPrice: 2184000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=8",
         rating: 5.0,
         soldCount: "100+ terjual",
         location: "Kota Administrasi Jakarta Barat",
@@ -132,7 +127,7 @@ function Product() {
         originalPrice: 999000,
         currentPrice: 788000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=9",
         rating: 4.9,
         soldCount: "100+ terjual",
         location: "Kota Administrasi Jakarta Utara",
@@ -146,7 +141,7 @@ function Product() {
         originalPrice: null,
         currentPrice: 1101000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=10",
         rating: 5.0,
         soldCount: "100+ terjual",
         location: "Kota Tangerang Selatan",
@@ -160,7 +155,7 @@ function Product() {
         originalPrice: null,
         currentPrice: 2546000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=11",
         rating: 5.0,
         soldCount: "250+ terjual",
         location: "Kota Administrasi Jakarta Barat",
@@ -174,7 +169,7 @@ function Product() {
         originalPrice: null,
         currentPrice: 1396000,
         discount: null,
-        image: "https://picsum.photos/200/300",
+        image: "https://picsum.photos/200/300?random=12",
         rating: 5.0,
         soldCount: "100+ terjual",
         location: "Kab. Sleman",
@@ -192,8 +187,7 @@ function Product() {
   };
 
   return (
-    <> {/* Fragment untuk membungkus multiple elemen root */}
-      <Navbar /> {/* <-- Navbar Anda di sini */}
+    <>
       <div className="product-page-container">
         {/* Secondary Header/Filter Chips */}
         <div className="secondary-header">
@@ -254,7 +248,6 @@ function Product() {
           <button>Top</button>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

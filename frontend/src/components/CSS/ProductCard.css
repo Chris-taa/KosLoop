@@ -1,139 +1,175 @@
-/* Product Card */
+/* src/components/CSS/ProductCard.css */
+
 .product-card {
-    background-color: white;
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
-    position: relative;
+    text-decoration: none;
+    color: #333;
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+    background-color: #fff;
+    cursor: pointer;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .product-card-image-wrapper {
-    position: relative;
+    position: relative; /* Untuk positioning badge di atas gambar */
     width: 100%;
-    height: 180px;
+    height: 180px; /* Tinggi gambar yang konsisten */
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .product-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background-color: #fcfcfc;
+    object-fit: cover; /* Agar gambar memenuhi area tanpa distorsi */
+    display: block;
 }
 
 .badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background-color: var(--badge-bg-blue);
-    color: white;
+    position: absolute; /* Position badge di atas gambar */
     padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
     border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    z-index: 10;
+    color: white;
+    z-index: 10; /* Pastikan di atas gambar */
 }
 
 .badge.flash-sale {
-    background-color: var(--badge-bg-red);
+    top: 8px;
+    left: 8px;
+    background-color: #F9423A; /* Merah untuk Flash Sale */
 }
 
 .badge.discount {
-    background-color: #ff9900;
-    top: 8px;
-    left: 8px;
+    /* Bisa diatur posisi berbeda jika ada dua badge */
+    /* Misalnya, di kanan atas atau di bawah flash sale */
+    top: 8px; /* Contoh: di samping flash sale */
+    right: 8px;
+    background-color: #FFC107; /* Kuning untuk diskon */
+    color: #333; /* Warna teks gelap */
 }
 
 .product-info {
-    padding: 10px 12px;
+    padding: 12px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
 .product-name {
-    font-size: 0.95rem;
+    font-size: 15px;
     font-weight: 600;
-    margin: 0 0 5px 0;
-    height: 3em;
+    margin: 0 0 8px 0;
+    height: 40px; /* Tetapkan tinggi untuk 2 baris teks */
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    /* -webkit-line-clamp: 2; */
+   /* Batasi hingga 2 baris */
     -webkit-box-orient: vertical;
 }
 
 .product-original-price {
-    font-size: 0.8rem;
-    color: var(--original-price-color);
+    font-size: 13px;
+    color: #777;
     text-decoration: line-through;
-    margin: 0;
+    margin: 0 0 4px 0;
 }
 
 .product-current-price {
-    font-size: 1.1rem;
+    font-size: 18px;
     font-weight: bold;
-    color: var(--text-dark);
-    margin: 5px 0;
+    color: #000000; /* Warna harga utama (merah) */
+    margin: 0 0 8px 0;
 }
 
 .product-meta {
     display: flex;
     align-items: center;
-    font-size: 0.8rem;
-    color: var(--text-light);
-    margin-bottom: 5px;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
 }
 
-.product-rating {
-    margin-right: 5px;
+.product-rating,
+.product-sold {
+    display: flex; /* Untuk mensejajarkan ikon dan teks */
+    align-items: center;
+    margin-right: 10px;
+}
+
+.product-rating .fas.fa-star {
+    color: #FFC107; /* Warna bintang kuning */
+    margin-right: 4px;
+    font-size: 12px; /* Ukuran ikon bintang */
+}
+
+.product-sold .fas.fa-circle {
+    font-size: 6px; /* Ukuran ikon bulat kecil */
+    color: #bbb; /* Warna abu-abu untuk bullet */
+    margin: 0 4px;
 }
 
 .product-location {
-    font-size: 0.8rem;
-    color: var(--text-light);
-    margin: 0 0 10px 0;
+    font-size: 12px;
+    color: #888;
+    margin-top: auto; /* Dorong ke bawah jika ada ruang */
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.product-location .fas.fa-map-marker-alt {
+    margin-right: 5px;
+    font-size: 13px;
+    color: #777;
+}
+
+.product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
 }
 
 .product-tag {
-    display: inline-block;
-    background-color: #f0f0f0;
-    color: var(--text-light);
+    font-size: 11px;
     padding: 3px 6px;
-    border-radius: 3px;
-    font-size: 0.7rem;
-    margin-right: 5px;
-    margin-top: 5px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .product-tag.gift {
-    background-color: #e6ffe6;
-    color: var(--kosloop-green);
+    background-color: #e0f2f7; /* Light blue */
+    color: #01579b; /* Darker blue */
 }
 
 .product-tag.cod {
-    background-color: #ffe6e6;
-    color: #cc0000;
+    background-color: #e8f5e9; /* Light green */
+    color: #2e7d32; /* Darker green */
 }
 
-/* Add any responsive adjustments specific to ProductCard here as well */
-@media (max-width: 768px) {
-  .product-name {
-    font-size: 1rem;
-  }
-  .product-current-price {
-    font-size: 1.2rem;
-  }
+/* Optional: Responsiveness for smaller cards */
+@media (max-width: 480px) {
+    .product-card-image-wrapper {
+        height: 140px;
+    }
+    .product-name {
+        font-size: 14px;
+        height: 36px;
+    }
+    .product-current-price {
+        font-size: 16px;
+    }
 }

@@ -1,0 +1,439 @@
+/* src/pages/CSS/Cart.css */
+
+:root {
+    --primary-color: #03ac0e; /* Hijau Tokopedia */
+    --base-color: #ffffff;    /* Putih */
+    --text-dark-neutral: black;
+    --text-transparent-color: rgb(107, 106, 106);
+    --secondary-color: #f70; /* Orange/Merah */
+    --link-color: #007bff;
+    --border-color: #eee;
+    --grey-text-color: #555;
+    --light-grey-bg: #f9f9f9;
+    --darker-grey-text-color: #333;
+    --lighter-grey-text-color: #888;
+    --medium-grey-text-color: #666;
+    --light-border-color: #ddd;
+    --faded-background: #f0f0f0;
+}
+
+
+.cart-page-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--base-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    color: var(--darker-grey-text-color);
+}
+
+.cart-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start; /* Items align to the top */
+}
+
+.cart-header h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cart-items-section {
+    flex: 2; /* Mengambil 2/3 ruang */
+    min-width: 600px; /* Lebar minimum untuk item keranjang */
+}
+
+.summary-section {
+    flex: 1; /* Mengambil 1/3 ruang */
+    position: sticky; /* Agar ringkasan tetap terlihat saat scroll */
+    top: 20px; /* Jarak dari atas */
+    background-color: var(--base-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.total-price {
+    font-weight: bold;
+    color: var(--text-dark-neutral);
+}
+
+.summary-promo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.summary-promo .fas {
+    font-size: 18px;
+}
+
+.cashback-info {
+    font-size: 14px;
+    color: var(--primary-color);
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.buy-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.buy-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+
+/* Cart Actions (Pilih Semua, Hapus) */
+.cart-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--base-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.select-all-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.select-all-checkbox input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+    accent-color: var(--primary-color); /* Warna checkbox saat checked */
+}
+
+.delete-selected-btn {
+    background: none;
+    border: none;
+    color: var(--link-color); /* Warna link */
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s ease;
+}
+
+.delete-selected-btn:hover {
+    opacity: 0.8;
+}
+
+/* Cart Item Grouped by Shop */
+.cart-shop-group {
+    background-color: var(--base-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Penting untuk border-radius */
+}
+
+.shop-header-row {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--light-grey-bg); /* Warna latar belakang header toko */
+    display: flex;
+    align-items: center;
+}
+
+.shop-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.shop-checkbox-label input[type="checkbox"] {
+    transform: scale(1.1);
+    cursor: pointer;
+    accent-color: var(--primary-color); /* Warna checkbox saat checked */
+}
+
+.shop-name-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: var(--darker-grey-text-color);
+    transition: color 0.2s ease;
+}
+
+.shop-name-link:hover {
+    color: var(--primary-color);
+}
+
+.shop-name-link .fas.fa-store {
+    color: var(--grey-text-color);
+    font-size: 14px; /* Ukuran icon toko */
+}
+
+
+/* Individual Cart Item */
+.cart-item {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color); /* Garis pemisah antar item dalam toko yang sama */
+}
+
+.cart-item:last-child {
+    border-bottom: none; /* Hapus border di item terakhir per toko */
+}
+
+.item-checkbox-col {
+    flex-shrink: 0; /* Pastikan kolom checkbox tidak mengecil */
+    padding-top: 5px; /* Sesuaikan untuk perataan visual dengan gambar produk */
+    margin-right: 15px; /* Jarak dari kolom detail produk */
+}
+
+.item-checkbox-col input[type="checkbox"] {
+    transform: scale(1.1);
+    cursor: pointer;
+    accent-color: var(--primary-color); /* Warna checkbox saat checked */
+}
+
+.item-details-col { /* Container untuk gambar dan info produk */
+    flex: 1; /* Mengambil sisa ruang */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-details-content { /* Baris untuk gambar + info teks produk */
+    display: flex;
+    gap: 15px;
+    align-items: flex-start; /* Align gambar dan teks di bagian atas */
+}
+
+.product-image-link {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    display: block;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Penting! Gambar akan dipotong jika perlu agar memenuhi area */
+    display: block;
+}
+
+.product-info-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.discount-badge {
+    background-color: var(--secondary-color);
+    color: var(--base-color);
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.product-name {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    max-height: 2.8em; /* 2 lines * 1.4 line-height */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-decoration: none;
+    color: var(--darker-grey-text-color);
+    margin-bottom: 5px;
+    transition: color 0.2s ease;
+}
+
+.product-name:hover {
+    color: var(--primary-color);
+}
+
+.original-price {
+    font-size: 13px;
+    color: var(--lighter-grey-text-color);
+    text-decoration: line-through;
+    margin-bottom: 2px;
+}
+
+.current-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-dark-neutral);
+    margin-bottom: 10px;
+}
+
+.item-actions-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Push to bottom */
+}
+
+.item-action-buttons {
+    display: flex;
+    gap: 15px;
+    color: var(--grey-text-color);
+}
+
+.item-action-buttons i {
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.item-action-buttons i:hover {
+    color: var(--primary-color);
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.quantity-control button {
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--primary-color); /* Menggunakan warna primary untuk tombol +/- */
+    transition: background-color 0.2s ease;
+}
+
+.quantity-control button:hover {
+    background-color: var(--faded-background);
+}
+
+.quantity-control span {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 5px;
+    color: var(--darker-grey-text-color);
+}
+
+/* Recommendations Section */
+.recommendations-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.recommendations-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Fleksibel untuk menyesuaikan layar */
+    gap: 16px;
+}
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 992px) {
+    .cart-content {
+        flex-direction: column; /* Ubah layout menjadi kolom di layar kecil */
+    }
+
+    .cart-items-section {
+        min-width: unset; /* Hapus min-width */
+        width: 100%;
+    }
+
+    .summary-section {
+        position: static; /* Hapus sticky di mobile */
+        width: 100%;
+    }
+
+    .recommendations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-page-container {
+        padding: 15px;
+    }
+    .cart-header h2 {
+        font-size: 20px;
+    }
+    .recommendations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .cart-page-container {
+        padding: 10px;
+    }
+    .product-details-content { /* Ganti .product-details-row menjadi .product-details-content */
+        flex-direction: column; /* Gambar dan info produk jadi kolom di layar sangat kecil */
+        align-items: center;
+        text-align: center;
+    }
+    .product-image-link {
+        margin-bottom: 10px;
+    }
+    .item-actions-bottom {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%; /* Agar tombol di bawah item keranjang mengisi lebar */
+    }
+    .quantity-control {
+        width: 100%;
+        justify-content: center;
+    }
+    .recommendations-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}

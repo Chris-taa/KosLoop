@@ -1,0 +1,44 @@
+/* src/components/CSS/FloatingChatButton.css */
+
+/* Pastikan variabel root diimpor atau didefinisikan di tempat yang dapat dijangkau */
+:root {
+  --primary-color: #03ac0e; /* Hijau Tokopedia */
+  --base-color: #ffffff;    /* Putih */
+  --text-dark-neutral: black;
+  /* ... variabel lainnya dari Detail.css atau global CSS Anda */
+}
+
+.floating-chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--base-color); /* Latar belakang putih */
+  color: var(--primary-color); /* Teks hijau */
+  border: 1px solid var(--primary-color); /* Border hijau */
+  border-radius: 50px; /* Sangat bulat */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Shadow lebih menonjol */
+  z-index: 999; /* Di bawah chat pop-up, tapi di atas konten lain */
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.floating-chat-button:hover {
+  background-color: var(--primary-color); /* Latar belakang hijau saat hover */
+  color: var(--base-color); /* Teks putih saat hover */
+  transform: translateY(-2px); /* Sedikit naik saat hover */
+}
+
+.floating-chat-button:active {
+  transform: translateY(0); /* Kembali ke posisi semula saat ditekan */
+  background-color: color-mix(in srgb, var(--primary-color) 80%, black); /* Sedikit lebih gelap */
+}
+
+.floating-chat-button i {
+  font-size: 20px; /* Ukuran ikon */
+}

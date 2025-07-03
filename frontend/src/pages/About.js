@@ -1,13 +1,9 @@
 import React from 'react';
-import Navbar from '../components/navbar'; // Pastikan path benar
-import Footer from '../components/footer'; // Pastikan path benar
 import './CSS/About.css'; // Pastikan Anda membuat file CSS ini
 
 const AboutUs = () => {
   return (
     <div className="about-us-page">
-      <Navbar /> {/* Menampilkan Navbar di bagian atas */}
-
       {/* Hero Section - New addition */}
       <section className="hero-section">
         <div className="hero-overlay"></div>
@@ -167,7 +163,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <Footer /> {/* Menampilkan Footer di bagian bawah */}
     </div>
   );
 };
