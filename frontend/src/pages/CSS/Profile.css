@@ -1,0 +1,549 @@
+/* src/pages/CSS/Profile.css */
+
+/* Variabel Root (Pastikan konsisten dengan file CSS global Anda) */
+:root {
+    --primary-color: #03ac0e; /* Hijau Tokopedia */
+    --base-color: #ffffff;    /* Putih */
+    --text-dark-neutral: black;
+    --text-transparent-color: rgb(107, 106, 106);
+    --secondary-color: #f70; /* Orange/Merah */
+    --link-color: #007bff;
+    --border-color: #eee;
+    --grey-text-color: #555;
+    --light-grey-bg: #f9f9f9;
+    --darker-grey-text-color: #333;
+    --lighter-grey-text-color: #888;
+    --medium-grey-text-color: #666;
+    --light-border-color: #ddd;
+    --faded-background: #f0f0f0;
+    --active-tab-bg: #e0f0ff; /* Latar belakang tab aktif */
+}
+
+.profile-page-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--base-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    color: var(--darker-grey-text-color);
+    display: flex;
+    gap: 20px; /* Jarak antara sidebar dan konten utama */
+    align-items: flex-start; /* Align content to the top */
+}
+
+/* Sidebar Styling */
+.profile-sidebar {
+    flex: 0 0 250px; /* Lebar sidebar tetap */
+    background-color: var(--base-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px 0; /* Padding vertikal, horizontal 0 karena item punya padding sendiri */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.profile-name-sidebar {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.profile-rating {
+    font-size: 14px;
+    color: var(--secondary-color); /* Warna orange untuk rating */
+}
+
+.profile-rating .fas.fa-star {
+    color: gold;
+    margin-right: 5px;
+}
+
+.sidebar-menu {
+    padding: 0 0; /* Menu item punya padding sendiri */
+}
+
+.sidebar-menu-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--grey-text-color);
+    text-transform: uppercase;
+    padding: 10px 20px; /* Padding untuk judul */
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 15px;
+    color: var(--darker-grey-text-color);
+}
+
+.sidebar-menu li:hover {
+    background-color: var(--faded-background);
+}
+
+.sidebar-menu li.active {
+    background-color: var(--active-tab-bg);
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.sidebar-menu li a {
+    text-decoration: none;
+    color: inherit; /* Mewarisi warna dari li */
+    display: block; /* Agar seluruh area li bisa diklik */
+}
+
+/* Main Content Styling */
+.profile-content {
+    flex: 1; /* Mengambil sisa ruang yang tersedia */
+    background-color: var(--base-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-tabs-header {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.profile-tabs-header button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--grey-text-color);
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 0.2s, color 0.2s;
+    font-weight: 500;
+}
+
+.profile-tabs-header button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.tab-content {
+    padding-top: 10px; /* Sedikit padding di atas konten tab */
+}
+
+/* Biodata Diri Section */
+.biodata-diri-section h3,
+.daftar-alamat-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.biodata-diri-section .section-title { /* Untuk "Ubah Kontak" */
+    font-size: 18px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+
+.biodata-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--light-border-color); /* Garis putus-putus */
+}
+.biodata-item:last-of-type {
+    border-bottom: none; /* Hapus border di item terakhir per grup */
+}
+/* Aturan tambahan untuk biodata-item di Ubah Kontak */
+.biodata-diri-section .section-title + .biodata-item {
+    border-top: 1px dashed var(--light-border-color);
+}
+
+
+.biodata-label {
+    flex: 0 0 120px; /* Lebar tetap untuk label */
+    font-size: 15px;
+    color: var(--grey-text-color);
+}
+
+.biodata-value {
+    flex: 1; /* Mengambil sisa ruang */
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--darker-grey-text-color);
+}
+
+.edit-button, .add-button {
+    background: none;
+    border: none;
+    color: var(--link-color); /* Warna biru untuk "Ubah" */
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.edit-button:hover, .add-button:hover {
+    background-color: color-mix(in srgb, var(--link-color) 10%, var(--base-color));
+}
+
+.status-badge {
+    background-color: #e8f5e9; /* Light green */
+    color: #2e7d32; /* Darker green */
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    flex-shrink: 0; /* Agar badge tidak menyusut */
+}
+
+/* Upload Photo Section */
+.upload-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.uploaded-photo-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--light-border-color);
+    margin-bottom: 15px;
+}
+
+.choose-photo-button {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-bottom: 10px;
+}
+
+.choose-photo-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+
+.photo-info {
+    font-size: 12px;
+    color: var(--grey-text-color);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* Daftar Alamat Section */
+.daftar-alamat-section {
+    /* Atur gaya untuk seluruh bagian daftar alamat */
+}
+
+.search-address-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.search-address-bar input[type="text"] {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--light-border-color);
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.search-address-bar input[type="text"]::placeholder {
+    color: var(--lighter-grey-text-color);
+}
+
+.search-address-bar input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary-color) 25%, transparent);
+}
+
+.add-new-address-button {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex; /* Untuk ikon jika ada */
+    align-items: center;
+    gap: 5px;
+}
+
+.add-new-address-button:hover {
+    background-color: color-mix(in srgb, var(--primary-color) 80%, black);
+}
+
+.address-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.address-filter-button {
+    background-color: var(--base-color);
+    color: var(--grey-text-color);
+    border: 1px solid var(--light-border-color);
+    border-radius: 20px; /* Pill shape */
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.address-filter-button.active {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.address-filter-button:hover:not(.active) {
+    background-color: var(--faded-background);
+}
+
+.address-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.address-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    background-color: var(--base-color);
+    position: relative; /* Untuk centang di pojok kanan atas */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.address-card.primary {
+    border-color: var(--primary-color); /* Border hijau untuk alamat utama */
+    background-color: color-mix(in srgb, var(--primary-color) 5%, var(--base-color)); /* Background sedikit hijau */
+}
+
+.address-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.address-type {
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--darker-grey-text-color);
+}
+
+.address-status {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.address-recipient, .address-phone, .address-full {
+    font-size: 14px;
+    color: var(--grey-text-color);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.address-recipient {
+    font-weight: bold;
+    color: var(--darker-grey-text-color);
+}
+
+.address-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--light-border-color);
+}
+
+.pinpoint-status {
+    font-size: 13px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+.pinpoint-status .fas.fa-map-marker-alt {
+    font-size: 14px;
+}
+
+.action-buttons-group {
+    display: flex;
+    gap: 10px;
+}
+
+.share-address-button, .edit-address-button {
+    background: none;
+    border: 1px solid var(--light-border-color);
+    border-radius: 8px;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--grey-text-color);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.share-address-button:hover, .edit-address-button:hover {
+    background-color: var(--faded-background);
+    border-color: var(--grey-text-color);
+}
+
+.share-address-button i {
+    margin-right: 5px;
+}
+
+.address-card-indicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px; /* Ukuran kotak hijau di pojok */
+    height: 30px;
+    background-color: var(--primary-color);
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--base-color);
+    font-size: 16px;
+    overflow: hidden; /* Pastikan tidak ada yang meluap */
+}
+
+/* Sembunyikan indicator jika bukan primary */
+.address-card:not(.primary) .address-card-indicator {
+    display: none;
+}
+
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 992px) {
+    .profile-page-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .profile-sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .profile-content {
+        width: 100%;
+        padding: 15px;
+    }
+    .profile-tabs-header {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .biodata-item, .search-address-bar, .address-actions {
+        flex-wrap: wrap; /* Izinkan wrap pada item */
+    }
+    .biodata-label {
+        flex: none; /* Hapus flex basis */
+        width: 100%; /* Lebar penuh */
+        margin-bottom: 5px;
+    }
+    .biodata-value, .edit-button, .add-button, .status-badge {
+        margin-bottom: 5px; /* Beri jarak antar elemen saat wrap */
+    }
+    .action-buttons-group {
+        width: 100%;
+        justify-content: space-around; /* Atau flex-start */
+    }
+}
+
+@media (max-width: 576px) {
+    .profile-page-container {
+        padding: 10px;
+    }
+    .profile-avatar-section {
+        padding: 0 10px 15px 10px;
+    }
+    .sidebar-menu li {
+        padding: 10px 15px;
+    }
+    .profile-tabs-header button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+    .biodata-diri-section h3, .daftar-alamat-section h3 {
+        font-size: 18px;
+    }
+    .biodata-item, .address-card {
+        padding: 10px;
+    }
+    .search-address-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .search-address-bar input, .add-new-address-button {
+        width: 100%;
+    }
+    .address-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .address-card-indicator {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+}

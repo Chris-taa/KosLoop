@@ -3,6 +3,7 @@ import React, { useState } from 'react'; // Import useState
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/navbar';
+import NavbarLogin from './components/navbar-login';
 import Footer from './components/footer';
 import FloatingChatButton from './components/FloatingChat'; // <-- IMPORT FloatingChatButton
 import ChatPopup from './components/ChatPopUp'; // <-- IMPORT ChatPopup (jika ini untuk chat umum)
@@ -15,6 +16,7 @@ import NotFound from './pages/NotFound';
 import About from './pages/About';
 import Product from './pages/Product';
 import Detail from './pages/Detail';
+import Cart from './pages/Cart';
 
 function App() {
   const [isGlobalChatPopupOpen, setIsGlobalChatPopupOpen] = useState(false);
@@ -42,6 +44,7 @@ function App() {
           <Route path="/products/:id" element={<Detail />} />
           <Route path="/categories" element={<Product/>} />
           <Route path="/about" element={<About />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
